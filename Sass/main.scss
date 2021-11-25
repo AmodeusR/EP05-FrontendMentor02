@@ -1,0 +1,160 @@
+@import "./colors";
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@mixin desktop {
+  @media (min-width: 60em) {
+    @content;
+  }
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-direction: column;
+  
+  background: color(lightgray-blue);
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 90%;
+  margin: 2rem auto;
+  
+  @include desktop {
+    align-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    width: 80em;
+    max-width: 95%;
+    grid-template-areas:
+      "violet-card violet-card darkgray-blue white-last"
+      "white-first darkblack-blue darkblack-blue white-last";
+  }
+}
+
+.card {
+  background: color(darkgray-blue);
+  padding: 2rem;
+
+  box-shadow: 0px 0px 20px 3px rgba(36, 38, 51, 0.15);
+  border-radius: 1.2rem;
+  color: white;
+  
+
+  &__picture {
+    border-radius: 50%;
+  }
+  
+  &__user-info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  
+  &__name {
+    display: block;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  
+  &__graduation {
+    font-size: .9rem;
+    opacity: 50%;
+  }
+  
+  &__title {
+    position: relative;
+    z-index: 20;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  &__review {
+    opacity: 70%;
+  }
+}
+
+.bg-quote {
+  position: relative;
+}
+
+.bg-quote::before {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+
+  font-family: "Font Awesome 5 Free";
+  content: "\f10d";
+  font-size: 8rem;
+  font-weight: 900;
+  opacity: .3;
+  color: lighten(color(violet), 30%);
+}
+
+.attribution {
+  font-size: .8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  opacity: .7;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: hsl(228, 55%, 34%);
+  font-weight: bolder;
+  transition: color 300ms ease;
+}
+
+.attribution a:hover {
+  color: hsl(238, 45%, 60%);
+}
+
+
+// Utility classes
+
+.violet-card {
+  background: color(violet);
+  @include desktop {
+    grid-area: violet-card;
+  }
+}
+
+.darkgray-blue-card {
+  background: color(darkgray-blue);
+  @include desktop {
+    grid-area: darkgray-blue;
+  }
+}
+
+.white-card {
+  background: color(white);
+  color: color(darkgray-blue);
+}
+
+.white-fisrt {
+  @include desktop {
+    grid-area: white-first; 
+  }
+}
+
+.white-last {
+  @include desktop {
+    grid-area: white-last;
+  }  
+}
+
+.darkblack-blue-card {
+  background: color(darkblack-blue);
+  
+  @include desktop {
+    grid-area: darkblack-blue; 
+  }
+}
