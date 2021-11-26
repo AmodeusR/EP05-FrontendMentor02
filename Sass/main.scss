@@ -5,6 +5,12 @@
 }
 
 @mixin desktop {
+  @media (min-width: 77em) {
+    @content;
+  }
+}
+
+@mixin tablet {
   @media (min-width: 60em) {
     @content;
   }
@@ -23,14 +29,30 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+  "violet-card"
+  "darkgray-blue"
+  "white-first"
+  "darkblack-blue"
+  "white-last";
   gap: 2rem;
   width: 90%;
   margin: 2rem auto;
+
+  @include tablet {
+    width: 60em;
+    max-width: 90%;
+    grid-template-areas: 
+    "violet-card violet-card"
+    "darkgray-blue white-last"
+    "white-first white-last"
+    "darkblack-blue darkblack-blue";
+  }
   
   @include desktop {
     align-content: center;
-    grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: repeat(4, 1fr);
     width: 80em;
     max-width: 95%;
     grid-template-areas:
@@ -122,16 +144,14 @@ body {
 
 .violet-card {
   background: color(violet);
-  @include desktop {
-    grid-area: violet-card;
-  }
+  grid-area: violet-card;
+  
 }
 
 .darkgray-blue-card {
   background: color(darkgray-blue);
-  @include desktop {
-    grid-area: darkgray-blue;
-  }
+  grid-area: darkgray-blue;
+  
 }
 
 .white-card {
@@ -140,21 +160,16 @@ body {
 }
 
 .white-fisrt {
-  @include desktop {
-    grid-area: white-first; 
-  }
+  grid-area: white-first; 
+  
 }
 
 .white-last {
-  @include desktop {
-    grid-area: white-last;
-  }  
+  grid-area: white-last;
+    
 }
 
 .darkblack-blue-card {
   background: color(darkblack-blue);
-  
-  @include desktop {
-    grid-area: darkblack-blue; 
-  }
+  grid-area: darkblack-blue;  
 }
