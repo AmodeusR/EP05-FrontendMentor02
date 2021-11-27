@@ -52,7 +52,6 @@ body {
   
   @include desktop {
     align-content: center;
-    // grid-template-columns: repeat(4, 1fr);
     width: 80em;
     max-width: 95%;
     grid-template-areas:
@@ -65,7 +64,7 @@ body {
   background: color(darkgray-blue);
   padding: 2rem;
 
-  box-shadow: 0px 0px 20px 3px rgba(36, 38, 51, 0.15);
+  box-shadow: 0px 0px 20px 3px hsla(232, 27%, 27%, 0.1);
   border-radius: 1.2rem;
   color: white;
   
