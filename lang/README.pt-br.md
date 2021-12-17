@@ -33,7 +33,7 @@
 
 ### Links
 
-- URL para o Site: [Github Pages](https://amodeusr.github.io/https://amodeusr.github.io/EP05-FrontendMentor02/)
+- URL para o Site: [Github Pages](https://amodeusr.github.io/FM--testimonials-grid-section/)
 
 ## Meu processo
 
